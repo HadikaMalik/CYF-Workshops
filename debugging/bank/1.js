@@ -14,3 +14,7 @@ function isValueFive(n) {
 
 isValueFive(5)
 
+
+//What I did - I went through each line to predict what will hapen 
+//What I expected. - I exoected it to be false 
+//What actually happened - It was false so I changed the function, from strictly equal to == and then it returned true 
