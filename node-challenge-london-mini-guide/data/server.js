@@ -10,51 +10,19 @@ app.get("/", (req, res) => {
     res.send({ Harrow, Stratford });
 })
 
-app.get("/:city/pharmacies", (req, res) => {
+app.get("/:city/:category", (req, res) => {
     const city = req.params.city.toLowerCase();
-    if (city === "harrow") {
-        const pharmacies = Harrow.pharmacies;
-        return res.send({ pharmacies });
-    }
-    if (city === "stratford") {
-        const pharmacies = Stratford.pharmacies;
-        return res.send({ pharmacies });
-    }
-})
+    const category = req.params.category.toLowerCase();
 
-app.get("/:city/colleges", (req, res) => {
-    const city = req.params.city.toLowerCase();
     if (city === "harrow") {
-        const colleges = Harrow.colleges;
-        return res.send({ colleges });
+        const categories = Harrow[category];
+        const val = { [category]: categories }
+        return res.send(val);
     }
     if (city === "stratford") {
-        const colleges = Stratford.colleges;
-        return res.send({ colleges });
-    }
-})
-
-app.get("/:city/doctors", (req, res) => {
-    const city = req.params.city.toLowerCase();
-    if (city === "harrow") {
-        const doctors = Harrow.doctors;
-        return res.send({ doctors });
-    }
-    if (city === "stratford") {
-        const doctors = Stratford.doctors;
-        return res.send({ doctors });
-    }
-})
-
-app.get("/:city/hospitals", (req, res) => {
-    const city = req.params.city.toLowerCase();
-    if (city === "harrow") {
-        const hospitals = Harrow.hospitals;
-        return res.send({ hospitals });
-    }
-    if (city === "stratford") {
-        const hospitals = Stratford.hospitals;
-        return res.send({ hospitals });
+        const categories = Stratford[category];
+        const val = { [category]: categories };
+        return res.send(val);
     }
 })
 
